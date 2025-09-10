@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://*.supabase.co 'unsafe-inline'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; base-uri 'self'; frame-ancestors 'none'; object-src 'none';">
   <base href="">
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -118,11 +117,6 @@
 </style>
 
   <link rel="stylesheet" href="amko-ui.css">
-
-  <!-- Supabase + AMKO KV sync -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="amko-supa.config.js"></script>
-  <script src="amko-supa.kv.js"></script>
 </head>
 <body>
 <div class="app">
@@ -361,7 +355,9 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>AMKO_BOOT(async ()=>{const AUTH_KEY='amko.auth', EXP_KEY=AUTH_KEY+':exp';
+<script>
+(function(){
+  const AUTH_KEY='amko.auth', EXP_KEY=AUTH_KEY+':exp';
   const USERS_KEY='amko.users', BR_KEY='amko.branches', ACC_BASE='akun';
   const $=(s,el=document)=>el.querySelector(s);
   const $$=(s,el=document)=>[...el.querySelectorAll(s)];
@@ -618,7 +614,8 @@
     updateButtonState();
     renderUsers();
   });
-});</script>
+})();
+</script>
 
 <script>
 document.querySelectorAll('#mobileOpen').forEach(btn=>{
@@ -629,14 +626,12 @@ document.querySelectorAll('#mobileClose').forEach(btn=>{
 });
 </script>
 
-<script>AMKO_BOOT(async ()=>{
-
+<script>
   function amkoLogout(){
     try{ localStorage.clear(); sessionStorage.clear(); }catch(e){}
     window.amkoGoto('index.html');
   }
-
-});</script>
+</script>
 <script>
 function amkoGoto(p){
   try{
