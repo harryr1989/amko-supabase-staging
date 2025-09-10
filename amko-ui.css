@@ -1,0 +1,58 @@
+
+/* =============== AMKO UI KIT v1 — Consistent & Mobile-Friendly =============== */
+:root{
+  --font-base: 14px;
+  --line-base: 1.55;
+  --fz-chip: 12px;
+  --fz-label: 12.5px;
+  --fz-input: 13px;
+  --fz-btn: 13px;
+  --ctrl-h: 40px;
+  --pad-input-x: 12px;
+  --pad-btn-y: .5rem;
+  --pad-btn-x: .7rem;
+  --tbl-pad-y: 9px;
+  --tbl-pad-x: 10px;
+  --border: #E5E7EB;
+}
+body{ font: var(--font-base)/var(--line-base) system-ui,-apple-system,Segoe UI,Roboto,Arial; }
+label, .form-label{ font-size: var(--fz-label); margin-bottom: 2px; }
+input.form-control, .form-control,
+select.form-select, .form-select,
+.control, select{
+  height: var(--ctrl-h);
+  padding: 0 var(--pad-input-x);
+  font-size: var(--fz-input);
+  line-height: 1.3;
+}
+.btn, .btnx{
+  font-size: var(--fz-btn);
+  height: var(--ctrl-h);
+  padding: var(--pad-btn-y) var(--pad-btn-x);
+  border-radius: 10px;
+}
+
+.content{ padding: 14px; gap: 12px; }
+.card{ border-radius: 14px; padding: 14px; }
+.table-responsive, .table-wrap{ overflow:auto; }
+
+/* Mobile breakpoint selaras semua halaman */
+@media (max-width: 960px){
+  .topbar, header.topbar{ position: sticky; top: 0; z-index: 12; background: inherit; }
+  .sidebar{
+    position: fixed;
+    left: 0; top: 0;
+    width: 260px;
+    height: 100dvh;
+    transform: translateX(-100%);
+    transition: transform .2s ease;
+    z-index: 20;
+  }
+  .sidebar.open{ transform: none; }
+  .nav-toggle{ display: inline-flex; align-items:center; justify-content:center;
+               width: 36px; height: 36px; border:1px solid var(--border);
+               border-radius: 10px; background:#fff; }
+  .nav-toggle:active{ transform: scale(.98); }
+  /* Ensure wide tables can scroll on mobile */
+  .amko-table-wrap table{ min-width: 720px; }
+}
